@@ -6,7 +6,7 @@ from app.models.users_model import UsersModel
 
 bp_user = Blueprint("bp_user", __name__, url_prefix="/user")
 
-@bp_user.route('user',methods=["POST"])
+@bp_user.route("/cadastro",methods=["POST"])
 def create_user():
     session = current_app.db.session
     data = request.get_json()

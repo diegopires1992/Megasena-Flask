@@ -8,3 +8,4 @@ def init_app(app:Flask):
     app.db = db
 
     from app.models.users_model import UsersModel
+    

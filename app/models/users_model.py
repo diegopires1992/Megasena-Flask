@@ -9,7 +9,7 @@ class UsersModel(db.Model):
     status = db.Column(db.String(20),nullable=False,)
     password_hash = db.Column(db.String(100), nullable=True)
 
-    game_list = db.relationship('GameModel', backref='users')
+    megasena_list = db.relationship('MegaSenaModel', backref='users')
     
     @property
     def password(self):

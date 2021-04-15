@@ -1,6 +1,6 @@
 from random import randint
 
-class DrawNumber():
+class PlayNumber():
     def __init__(self,quantity_number):
         self.quantity = quantity_number
     

@@ -8,6 +8,8 @@ class UsersModel(db.Model):
     email = db.Column(db.String(100), nullable=False, unique=True)
     status = db.Column(db.String(20),nullable=False,)
     password_hash = db.Column(db.String(100), nullable=True)
+
+    game_list = db.relationship('GameModel', backref='users')
     
     @property
     def password(self):

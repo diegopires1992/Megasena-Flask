@@ -10,6 +10,6 @@ class DrawNumber():
 
 
 
-teste = DrawNumber(6)
-retorno = teste.numbers()
-print(retorno)
+# teste = DrawNumber(6)
+# retorno = teste.numbers()
+# print(retorno)

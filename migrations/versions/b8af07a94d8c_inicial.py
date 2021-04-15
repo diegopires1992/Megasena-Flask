@@ -1,8 +1,8 @@
-"""Adicionado tabela user_model
+"""inicial
 
-Revision ID: eb9e727e3cd7
+Revision ID: b8af07a94d8c
 Revises: 
-Create Date: 2021-04-13 23:28:04.253883
+Create Date: 2021-04-14 18:56:08.400166
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'eb9e727e3cd7'
+revision = 'b8af07a94d8c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,6 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=100), nullable=False),
     sa.Column('email', sa.String(length=100), nullable=False),
+    sa.Column('status', sa.String(length=20), nullable=False),
     sa.Column('password_hash', sa.String(length=100), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')

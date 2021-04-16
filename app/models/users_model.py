@@ -7,7 +7,7 @@ class UsersModel(db.Model):
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
     status = db.Column(db.String(20),nullable=False,)
-    password_hash = db.Column(db.String(100), nullable=True)
+    password_hash = db.Column(db.String(100), nullable=False)
 
     megasena_list = db.relationship('MegaSenaModel', backref='users')
     

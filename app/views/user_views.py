@@ -4,7 +4,7 @@ from datetime import timedelta
 
 from flask.globals import session
 
-from flask_jwt_extended import create_access_token,create_refresh_token,jwt_required,get_jwt_identity
+from flask_jwt_extended import create_access_token,jwt_required,get_jwt_identity
 from app.models.users_model import UsersModel
 
 
@@ -14,7 +14,7 @@ bp_user = Blueprint("bp_user", __name__, url_prefix="/usuario")
 def create_user():
     try:
         session = current_app.db.session
-                
+        
         body = request.get_json()
 
         name = body.get("name")
@@ -50,7 +50,7 @@ def login():
         body = request.get_json()
         email = body.get('email')
         password = body.get('password')
-
+        
         found_user: UsersModel = UsersModel.query.filter_by(email=email,status="ativo").first()
 
         if not found_user or not found_user.check_password(password):
@@ -63,7 +63,7 @@ def login():
 
     except Exception:
 
-        return {"msg": "Erro Usuario não existe"},HTTPStatus.BAD_REQUEST
+        return {"msg": "Erro a fazer o login"},HTTPStatus.BAD_REQUEST
 
 @bp_user.route("/",methods=["PUT"])
 @jwt_required()
@@ -98,6 +98,34 @@ def update_user():
 
     except Exception:
         return {"msg": "Erro ao fazer update no usuario"},HTTPStatus.BAD_REQUEST
+
+@bp_user.route("/", methods=["PATCH"])
+@jwt_required()
+def patch_user():
+
+    try:
+        session = current_app.db.session
+        body = request.get_json()
+        if not body:
+            return {"msg": "Verifique o body da requisição"},HTTPStatus.BAD_REQUEST
+
+        user_id = get_jwt_identity()
+        found_user: UsersModel = UsersModel.query.get(user_id)
+
+        response = []
+    
+        for key, value in body.items():            
+            response.append(key)
+            setattr(found_user, key, value)
+    
+        change_info = ','.join([str(elem) for elem in response])
+
+        session.add(found_user)
+        session.commit()
+
+        return {"campos_alterados":change_info},HTTPStatus.OK
+    except Exception:
+        return "Erro ao alterar o Usuario",HTTPStatus.BAD_REQUEST
 
 
 @bp_user.route("/delete",methods=["DELETE"])

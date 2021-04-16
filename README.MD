@@ -1,4 +1,7 @@
-# Passo1:
+# Passo1
+    faça a criação de uma base de dados.
+
+# Passo2
     Este processo é destinado para linux
 
     Abra o terminal e navegue ate a pasta clonada e rode o comando:
@@ -6,12 +9,12 @@
       python3 -m venv env
       source env/bin/activate
 
-# Passo2
+# Passo3
     Execute no terminal na pasta onde esta o projeto:
 
     pip install requirements.txt
 
-# Passo3
+# Passo4
     1-Na pasta clonada tem um arquivo:
      .env.example 
      renomeie o mesmo para: 
@@ -20,7 +23,7 @@
     SQLALCHEMY_DATABASE_URI="postgresql://usuario:senha@localhost/bancodedados"
 
 
-# Passo4
+# Passo5
     Para executar o robo estou usando a biblioteca selenium para python com driver para firefox:
 
     1-Baixe o arquivo do driver firefox:
@@ -36,9 +39,15 @@
     5-Link documentação selenium:
         https://selenium-python.readthedocs.io/installation.html
 
-# Passo4
+# Passo6
+    Para criar as tabelas no banco que já foi criado no passo1 vamos usar o comando:
+    flask db migrate -m "inicio"
+    segundo comando:
+    flask db upgrade
+
+# Passo7
     Para as requisição da API aqui esta link do postman:
     https://www.postman.com/science-pilot-55116957/workspace/testetecnicopython/request/15389359-f0641211-8d83-4758-a731-aa67751b01ee
 
-# Passo5
+# Passo8
     Agora que esta tudo configurado podemos rodar o projeto.

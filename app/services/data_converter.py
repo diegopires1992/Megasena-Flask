@@ -10,3 +10,10 @@ class DataConvert():
         for number_string in result_convert[-1:][0].split():
             result_new.append(int(number_string))
         return result_new
+
+    def list_game(self):
+        result_converts = [result.games_played.replace("{","").replace("}","").replace(","," ") for result in self.data_mega_sena]
+        result_news = []
+        for number_string in result_converts:
+            result_news.append(number_string)
+        return result_news

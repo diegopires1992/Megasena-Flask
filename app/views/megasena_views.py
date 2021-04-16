@@ -66,6 +66,23 @@ def hit_the_last_game():
                 counter = counter + 1
                 number_correct_answers.append(number)
 
-        return {"numeros_de_acertos":counter,"numeros_acertados":number_correct_answers},HTTPStatus.OK
+        return {"numeros_de_acertos_no_ultimo_jogo":counter,"numeros_acertados":number_correct_answers},HTTPStatus.OK
+    except Exception:
+        return "Erro ao Sortear",HTTPStatus.BAD_REQUEST
+
+
+@bp_megasena.route("/listadejogos",methods=["GET"])
+@jwt_required()
+def list_game():
+    try:
+        session = current_app.db.session
+        user_id = get_jwt_identity()
+
+        data_mega_sena = session.query(MegaSenaModel).filter_by(users_id=user_id)
+
+        instance = DataConvert(data_mega_sena)
+        result_list = instance.list_game()
+
+        return {"lista_de_jogos":result_list},HTTPStatus.OK
     except Exception:
         return "Erro ao Sortear",HTTPStatus.BAD_REQUEST   

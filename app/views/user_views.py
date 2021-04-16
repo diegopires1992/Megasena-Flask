@@ -82,6 +82,8 @@ def update_user():
         password = body.get("password")
 
         found_user: UsersModel = UsersModel.query.get(user_id)
+        if found_user.status == "desabilitado":
+            return "Usuario não encontrado",HTTPStatus.NOT_FOUND
         found_user.name = name
         found_user.email = email
         found_user.password = password
@@ -111,6 +113,8 @@ def patch_user():
 
         user_id = get_jwt_identity()
         found_user: UsersModel = UsersModel.query.get(user_id)
+        if found_user.status == "desabilitado":
+            return "Usuario não encontrado",HTTPStatus.NOT_FOUND
 
         response = []
     

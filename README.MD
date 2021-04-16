@@ -6,8 +6,8 @@
 
     Abra o terminal e navegue ate a pasta clonada e rode o comando:
 
-      python3 -m venv env
-      source env/bin/activate
+      python3 -m venv venv
+      source venv/bin/activate
 
 # Passo3
     Execute no terminal na pasta onde esta o projeto:

@@ -12,7 +12,7 @@
 # Passo3
     Execute no terminal na pasta onde esta o projeto:
 
-    pip install requirements.txt
+    pip install -r requirements.txt
 
 # Passo4
     1-Na pasta clonada tem um arquivo:
@@ -41,8 +41,11 @@
 
 # Passo6
     Para criar as tabelas no banco que já foi criado no passo1 vamos usar o comando:
-    flask db migrate -m "inicio"
+    primeiro comando:
+    flask db stamp head
     segundo comando:
+    flask db migrate -m "inicio"
+    teceiro comando:
     flask db upgrade
 
 # Passo7

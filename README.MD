@@ -1,77 +1,44 @@
-# Sobre
-Ester README tem por objetivo fornecer as informações necessárias para avaliação de candidatos para a linguagem Python.
-#  🏗   O que fazer?
+# Passo1:
+    Este processo é destinado para linux
 
-Você deve realizar um fork deste repositório e, ao finalizar, enviar o link do seu repositório para a nossa equipe. Lembre-se, NÃO é necessário criar um Pull Request para isso, nós iremos avaliar e retornar por email o resultado do seu teste.
+    Abra o terminal e navegue ate a pasta clonada e rode o comando:
 
-# 🚨 Requisitos
+      python3 -m venv env
+      source env/bin/activate
 
-- A API deverá ser construída em Python
-- Implementar autenticação e deverá seguir o padrão **JWT**, lembrando que o token a ser recebido deverá ser no formato **Bearer**
-- Recomendamos uso de Flask ou Django como framework, no  entanto outros frameworks serão aceitos.
-- Para a comunicação com o banco de dados utilize algum **ORM**/**ODM**
-- Bancos relacionais permitidos:
-      - MySQL
-      - MariaDB
-      - Postgre
-- Bancos não relacionais permitidos:
-      - MongoDB
-- Sua API deverá seguir os padrões Rest na construção das rotas e retornos
-- Sua API deverá conter a collection/variáveis do postman ou algum endpoint da documentação em openapi para a realização do teste
-- Descrever de forma clara em seu README os passos para executar seu projeto.
-# 🕵🏻‍♂️ Itens a serem avaliados
+# Passo2
+    Execute no terminal na pasta onde esta o projeto:
 
-- Estrutura do Projeto
-- Segurança da API, como autenticação, senhas salvas no banco, SQL Injection e outros
-- Boas práticas da Linguagem/Framework
-- Seu projeto deverá seguir tudo o que foi exigido na seção [O que desenvolver?](##--o-que-desenvolver)
-- Migrations para a criação das tabelas do banco relacional caso seja escolhido um banco relacional.
+    pip install requirements.txt
 
-# 🎁 Extra
-
-Esses itens não são obrigatórios, porém desejados.
-
-- Testes unitários
-- Linter
-- Code Formater
+# Passo3
+    1-Na pasta clonada tem um arquivo:
+     .env.example 
+     renomeie o mesmo para: 
+     .env
+    2-Nesse arquivo tem a linha para configuração do banco e o  banco utilizado foi o postgresql agora altere para suas configurações:
+    SQLALCHEMY_DATABASE_URI="postgresql://usuario:senha@localhost/bancodedados"
 
 
-# 🖥 O que desenvolver?
-Você deverá construir uma API que faça jogos da mega sena, o usuario deverá escolher a quantidade de dezenas por jogo e sua API irá gerar aleatoriamente dezenas para o usuário. O usuário poderá consultar o resultado do ultimo jogo e comparar com suas dezenas para conferir quantos numeros acertou.
+# Passo4
+    Para executar o robo estou usando a biblioteca selenium para python com driver para firefox:
 
-- IMPORTANTE: Para obter o ultimo resultado da megasena você deverá fazer um webscrapping no Google. A seguinte pesquisa te traz o que você precisa obter: https://www.google.com/search?q=caixa+mega+sena 
+    1-Baixe o arquivo do driver firefox:
+        https://github.com/mozilla/geckodriver/releases
+    2-Faça a extração do mesmo.
 
+    3-Navegue pelo terminal ate a pasta extraida do arquivo 
 
-Rotas necessárias para API:
+    4-Agora que esta na pasta certa faça o comando no terminal:
 
-- Usuário
+    sudo cp geckodriver /usr/local/bin/
 
-    - Cadastro
-    - Login
-    - Edição (o usuário deve está autenticado)
-    - Exclusão lógica (O usuário so pode deletar a propria conta)
+    5-Link documentação selenium:
+        https://selenium-python.readthedocs.io/installation.html
 
+# Passo4
+    Para as requisição da API aqui esta link do postman:
+    https://www.postman.com/science-pilot-55116957/workspace/testetecnicopython/request/15389359-f0641211-8d83-4758-a731-aa67751b01ee
 
-- Megasena (todos endpoints devem exigir autenticação)
-    
-    - Realizar um novo jogo.
-        - Deverá receber quantos dezenas (entre 6 e 10) o usuário deseja e sortear dezenas de acordo com a quantidade escolhida.
-    - Consultar o resultado da ultima megasena (O webscrapping citado acima).
-    - Ver quantos numeros acertou no seu ultimo jogo.
-    - Listar seus jogos passados.
-
-# 🔗 Links
-
-- Documentação JWT https://jwt.io/
-- Frameworks:
-
-    -   https://www.djangoproject.com
-    -   https://flask.palletsprojects.com/en/1.1.x/
-
-- Bibliotecas que podem te ajudar:
-    - random
-    - pandas
-    - cfscrape
-    - bs4
-    - lxml
-
+# Passo5
+    Agora que esta tudo configurado podemos rodar o projeto.

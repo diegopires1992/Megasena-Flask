@@ -1,12 +1,16 @@
 from time import sleep
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 
 
 
 class RobotMegaSena():
 
+    options_global = Options()
+    options_global.headless = True
+    driver = webdriver.Firefox(options=options_global)
+
     url = "https://www.google.com/search?q=caixa+mega+sena"
-    driver = webdriver.Firefox()
 
     def __init__(self):
         self.url = self.url
@@ -22,10 +26,3 @@ class RobotMegaSena():
     def get_all_number(self):
         boxes = self._get_box()
         return [int(box.text) for box in boxes]
-
-
-
-# teste = RobotMegaSena()
-# teste.navigate()
-# resultado = teste.get_all_number()
-# print(resultado)

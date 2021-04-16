@@ -14,7 +14,7 @@ bp_user = Blueprint("bp_user", __name__, url_prefix="/usuario")
 def create_user():
     try:
         session = current_app.db.session
-        
+                
         body = request.get_json()
 
         name = body.get("name")
@@ -50,6 +50,7 @@ def login():
         body = request.get_json()
         email = body.get('email')
         password = body.get('password')
+
         found_user: UsersModel = UsersModel.query.filter_by(email=email,status="ativo").first()
 
         if not found_user or not found_user.check_password(password):

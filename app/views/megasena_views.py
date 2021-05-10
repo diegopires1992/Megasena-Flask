@@ -38,8 +38,7 @@ def current_game():
     try:
         intancia = RobotMegaSena()
         intancia.navigate()
-        resultado = intancia.get_all_number()
-        print(resultado)  
+        resultado = intancia.get_all_number()  
         return {"sorteo_atualizado":resultado},HTTPStatus.OK
     except Exception:
         return "Erro ao executar o Robo",HTTPStatus.BAD_REQUEST

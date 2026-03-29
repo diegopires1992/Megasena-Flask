@@ -1,59 +1,59 @@
 # Megasena
->API de jogos da mega sena, o usuario deverá escolher a quantidade de dezenas por jogo e sua API irá gerar aleatoriamente dezenas para o usuário. O usuário poderá consultar o resultado do ultimo jogo e comparar com suas dezenas para conferir quantos numeros acertou..
+>Mega-Sena game API. The user chooses how many numbers per game, and the API randomly generates the numbers. The user can also check the latest draw result and compare it with their own numbers to see how many hits they got.
 <br>
-# Passo1
-    faça a criação de uma base de dados.
+# Step 1
+    Create a database.
 
-# Passo2
-    Este processo é destinado para linux
+# Step 2
+    This process is intended for Linux.
 
-    Abra o terminal e navegue ate a pasta clonada e rode o comando:
+    Open the terminal, navigate to the cloned folder, and run:
 
       python3 -m venv venv
       source venv/bin/activate
 
-# Passo3
-    Execute no terminal na pasta onde esta o projeto:
+# Step 3
+    Run this command in the project folder:
 
     pip install -r requirements.txt
 
-# Passo4
-    1-Na pasta clonada tem um arquivo:
+# Step 4
+    1-In the cloned folder there is a file:
      .env.example 
-     renomeie o mesmo para: 
+     rename it to: 
      .env
-    2-Nesse arquivo tem a linha para configuração do banco e o  banco utilizado foi o postgresql agora altere para suas configurações:
+    2-This file contains the database configuration line. The original setup uses PostgreSQL, so update it with your own settings:
     SQLALCHEMY_DATABASE_URI="postgresql://usuario:senha@localhost/bancodedados"
 
 
-# Passo5
-    Para executar o robo estou usando a biblioteca selenium para python com driver para firefox:
+# Step 5
+    To run the bot, this project uses Selenium for Python with the Firefox driver:
 
-    1-Baixe o arquivo do driver firefox:
+    1-Download the Firefox driver:
         https://github.com/mozilla/geckodriver/releases
-    2-Faça a extração do mesmo.
+    2-Extract the downloaded file.
 
-    3-Navegue pelo terminal ate a pasta extraida do arquivo 
+    3-In the terminal, navigate to the extracted folder.
 
-    4-Agora que esta na pasta certa faça o comando no terminal:
+    4-Now run this command:
 
     sudo cp geckodriver /usr/local/bin/
 
-    5-Link documentação selenium:
+    5-Selenium documentation:
         https://selenium-python.readthedocs.io/installation.html
 
-# Passo6
-    Para criar as tabelas no banco que já foi criado no passo1 vamos usar o comando:
-    primeiro comando:
+# Step 6
+    To create the tables in the database created in Step 1, run:
+    first command:
     flask db stamp head
-    segundo comando:
+    second command:
     flask db migrate -m "inicio"
-    teceiro comando:
+    third command:
     flask db upgrade
 
-# Passo7
-    Para as requisição da API aqui esta link do postman:
+# Step 7
+    For API requests, here is the Postman link:
     https://www.postman.com/science-pilot-55116957/workspace/testetecnicopython/request/15389359-f0641211-8d83-4758-a731-aa67751b01ee
 
-# Passo8
-    Agora que esta tudo configurado podemos rodar o projeto.
+# Step 8
+    Now that everything is configured, you can run the project.
